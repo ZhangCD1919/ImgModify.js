@@ -1,0 +1,319 @@
+@imageUrl: '../resource/images/';
+@themeFocusColor: #f1f2f6;
+@themeActiveColor: #177cff;
+@TextDeepColor: #26252a;
+@TextLiteralColor: #666666;
+@TextLightColor: #999999;
+@themeColor: #4393f9;
+@themeHoverColor: #177cff;
+@warmRedColor: #fd6972;
+@chooseColor: #e6f3ff;
+@inputColor: #cccccc;
+@shadow: 0 0 25px rgba(12, 39, 132, 0.1);
+@lineBorder: 1px solid #e2e3e7;
+.i-m-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  user-select: none;
+  background-color: #ffffff;
+  border: @lineBorder;
+  font-size: 14px;
+  .i-m-title-bar {
+    width: 100%;
+    height: 28px;
+    box-sizing: border-box;
+    background: #f0f5fb;
+    border: @lineBorder;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 28px;
+    color: @TextDeepColor;
+  }
+  .i-m-head {
+    width: 100%;
+    height: 90px;
+    border-bottom: @lineBorder;
+    line-height: 90px;
+    font-size: 28px;
+    font-weight: 700;
+    color: @TextDeepColor;
+    text-align: left;
+    padding: 0 30px;
+    box-sizing: border-box;
+    .choose-file-btn {
+      display: inline-block;
+      font-weight: 400;
+      width: 120px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 15px;
+      font-size: 14px;
+      text-align: center;
+      color: #fff;
+      background: @themeColor;
+      margin-left: 420px;
+    }
+
+    .choose-file-btn:hover {
+      background: @themeHoverColor;
+    }
+    #choose-file-btn {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  #content_layer {
+    width: 100%;
+    position: absolute;
+    top: 117px;
+    bottom: 0;
+
+    .edit-container {
+      width: 340px;
+      position: relative;
+      margin: 10px 50px 0 50px;
+      float: left;
+
+      .prompt-label {
+        height: 54px;
+        line-height: 54px;
+        font-size: 14px;
+        color: @TextLightColor;
+        text-align: center;
+      }
+
+      .cut-view {
+        display: none;
+        position: absolute;
+      }
+
+      .cut-wrap {
+        position: relative;
+        margin-top: 0px;
+        background-color: #f2f2f2;
+        width: 340px;
+        height: 340px;
+        border-radius: 2px;
+        overflow: hidden;
+
+        .view {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          display: none;
+          cursor: move;
+          transform: scale(1) rotate(0);
+        }
+
+        .mask {
+          width: 100%;
+          height: 100%;
+          background-image: url("@{imageUrl}mask.png");
+          background-size: cover;
+          z-index: 2;
+          position: absolute;
+          display: none;
+          pointer-events: none;
+        }
+
+        img {
+          display: none;
+        }
+
+        .cut {
+          width: 100%;
+          height: 100%;
+          z-index: 3;
+          background-repeat: no-repeat;
+          display: none;
+          border-radius: 50%;
+
+          .region {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            top: -1px;
+            left: -1px;
+          }
+        }
+      }
+      .tools {
+        width: 100%;
+        height: 20px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        div {
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+        .smaller {
+          width: 20px;
+          background-image: -webkit-image-set(url("@{imageUrl}to-smaller.png") 1x, url("@{imageUrl}to-smaller@2x.png") 2x);
+          &:hover {
+            background-image: -webkit-image-set(url("@{imageUrl}to-smaller-H.png") 1x, url("@{imageUrl}to-smaller-H@2x.png") 2x);
+          }
+          &.disabled {
+            &:hover {
+              background-image: -webkit-image-set(url("@{imageUrl}to-smaller.png") 1x, url("@{imageUrl}to-smaller@2x.png") 2x);
+            }
+          }
+        }
+        .drag-slide {
+          position: relative;
+          width: 180px;
+          height: 100%;
+          margin-right: 10px;
+          .stick {
+            width: 190px;
+            position: absolute;
+            top: 9px;
+            height: 2px;
+            background: #cccccc;
+          }
+          span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: @themeColor;
+            position: absolute;
+            top: 5px;
+          }
+        }
+        .bigger {
+          width: 20px;
+          background-image: -webkit-image-set(url("@{imageUrl}to-bigger.png") 1x, url("@{imageUrl}to-bigger@2x.png") 2x);
+          &:hover {
+            background-image: -webkit-image-set(url("@{imageUrl}to-bigger-H.png") 1x, url("@{imageUrl}to-bigger-H@2x.png") 2x);
+          }
+          &.disabled {
+            &:hover {
+              background-image: -webkit-image-set(url("@{imageUrl}to-bigger.png") 1x, url("@{imageUrl}to-bigger@2x.png") 2x);
+            }
+          }
+        }
+        .left-rotate {
+          width: 15px;
+          height: 18px;
+          margin: 1px 20px;
+          background-image: -webkit-image-set(url("@{imageUrl}rotate.png") 1x, url("@{imageUrl}rotate@2x.png") 2x);
+          &:hover {
+            background-image: -webkit-image-set(url("@{imageUrl}rotate-H.png") 1x, url("@{imageUrl}rotate-H@2x.png") 2x);
+          }
+          &.disabled {
+            &:hover {
+              background-image: -webkit-image-set(url("@{imageUrl}rotate.png") 1x, url("@{imageUrl}rotate@2x.png") 2x);
+            }
+          }
+        }
+        .right-rotate {
+          width: 15px;
+          height: 18px;
+          margin-top: 1px;
+          transform: scaleX(-1);
+          background-image: -webkit-image-set(url("@{imageUrl}rotate.png") 1x, url("@{imageUrl}rotate@2x.png") 2x);
+          &:hover {
+            background-image: -webkit-image-set(url("@{imageUrl}rotate-H.png") 1x, url("@{imageUrl}rotate-H@2x.png") 2x);
+          }
+          &.disabled {
+            &:hover {
+              background-image: -webkit-image-set(url("@{imageUrl}rotate.png") 1x, url("@{imageUrl}rotate@2x.png") 2x);
+            }
+          }
+        }
+      }
+    }
+
+    .preview-container {
+      width: 268px;
+      float: left;
+      margin-top: 28px;
+      .label {
+        width: 100%;
+        height: 22px;
+        line-height: 22px;
+        text-align: left;
+        font-size: 14px;
+        color: @TextDeepColor;
+      }
+      .view-wrap {
+        width: 100%;
+        height: 180px;
+        margin-top: 100px;
+        margin-bottom: 88px;
+        .view-c {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          overflow: hidden;
+          position: relative;
+          margin: 0 auto;
+          .view {
+            position: absolute;
+          }
+        }
+        .view {
+          width: 120px;
+          height: 120px;
+          overflow: hidden;
+          transform: scale(1) rotate(0);
+          margin: 0 auto;
+          img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            float: left;
+            display: block;
+            border: none;
+          }
+        }
+
+      }
+    }
+
+    .btn-row {
+      margin: 0 auto;
+      margin-top: 26px;
+      width: 200px;
+      height: 30px;
+      .btn {
+        float: left;
+        width: 90px;
+        height: 30px;
+        box-sizing: border-box;
+        border-radius: 15px;
+        line-height: 30px;
+        text-align: center;
+        color: @TextLightColor;
+        -webkit-user-select: none;
+        font-size: 14px;
+        &.cancel-btn {
+          margin-right: 20px;
+          border: 1px solid #ccc;
+          background: #fff;
+          &:hover, &:active {
+            background: @themeFocusColor;
+          }
+        }
+        &.confirm-btn {
+          color: #fff;
+          background: @themeColor;
+          &:hover, &:active {
+            background: #177cff;
+          }
+        }
+      }
+
+    }
+  }
+}

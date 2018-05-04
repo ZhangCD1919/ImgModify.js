@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>imgModify.js</title>
+    <link rel="stylesheet" href="src/imgModify.css">
+    <script src="resource/js/jq-1.11.3.correct.min.js"></script>
+    <script src="src/imgModify.js"></script>
+    <style>
+        .i-m-container {
+            overflow: hidden;
+            width: 724px;
+            height: 604px;
+        }
+    </style>
+</head>
+<body>
+<div class="i-m-container">
+    <div class="i-m-inner"></div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.i-m-inner').imgModify();
+    })
+</script>
+</body>
+</html>

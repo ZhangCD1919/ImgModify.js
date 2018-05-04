@@ -1,0 +1,285 @@
+.i-m-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    user-select: none;
+    background-color: #ffffff;
+    border: 1px solid #e2e3e7;
+    font-size: 14px;
+}
+.i-m-inner .i-m-title-bar {
+    width: 100%;
+    height: 28px;
+    box-sizing: border-box;
+    background: #f0f5fb;
+    border: 1px solid #e2e3e7;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 28px;
+    color: #26252a;
+}
+.i-m-inner .i-m-head {
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid #e2e3e7;
+    line-height: 90px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #26252a;
+    text-align: left;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+.i-m-inner .i-m-head .choose-file-btn {
+    display: inline-block;
+    font-weight: 400;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    background: #4393f9;
+    margin-left: 420px;
+}
+.i-m-inner .i-m-head #choose-file-btn {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.i-m-inner .i-m-head .choose-file-btn:hover {
+    background: #177cff;
+}
+.i-m-inner #content_layer {
+    width: 100%;
+    position: absolute;
+    top: 117px;
+    bottom: 0;
+}
+.i-m-inner #content_layer .edit-container {
+    width: 340px;
+    position: relative;
+    margin: 10px 50px 0 50px;
+    float: left;
+}
+.i-m-inner #content_layer .edit-container .prompt-label {
+    height: 54px;
+    line-height: 54px;
+    font-size: 14px;
+    color: #999999;
+    text-align: center;
+}
+.i-m-inner #content_layer .edit-container .cut-view {
+    display: none;
+    position: absolute;
+}
+.i-m-inner #content_layer .edit-container .cut-wrap {
+    position: relative;
+    margin-top: 0px;
+    background-color: #f2f2f2;
+    width: 340px;
+    height: 340px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.i-m-inner #content_layer .edit-container .cut-wrap .view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    cursor: move;
+    transform: scale(1) rotate(0);
+}
+.i-m-inner #content_layer .edit-container .cut-wrap .mask {
+    width: 100%;
+    height: 100%;
+    background-image: url("../resource/images/mask.png");
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    display: none;
+    pointer-events: none;
+}
+.i-m-inner #content_layer .edit-container .cut-wrap img {
+    display: none;
+}
+.i-m-inner #content_layer .edit-container .cut-wrap .cut {
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-repeat: no-repeat;
+    display: none;
+    border-radius: 50%;
+}
+.i-m-inner #content_layer .edit-container .cut-wrap .cut .region {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    top: -1px;
+    left: -1px;
+}
+.i-m-inner #content_layer .edit-container .tools {
+    width: 100%;
+    height: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.i-m-inner #content_layer .edit-container .tools div {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.i-m-inner #content_layer .edit-container .tools .smaller {
+    width: 20px;
+    background-image: -webkit-image-set(url("../resource/images/to-smaller.png") 1x, url("../resource/images/to-smaller@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .smaller:hover {
+    background-image: -webkit-image-set(url("../resource/images/to-smaller-H.png") 1x, url("../resource/images/to-smaller-H@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .smaller.disabled:hover {
+    background-image: -webkit-image-set(url("../resource/images/to-smaller.png") 1x, url("../resource/images/to-smaller@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .drag-slide {
+    position: relative;
+    width: 180px;
+    height: 100%;
+    margin-right: 10px;
+}
+.i-m-inner #content_layer .edit-container .tools .drag-slide .stick {
+    width: 190px;
+    position: absolute;
+    top: 9px;
+    height: 2px;
+    background: #cccccc;
+}
+.i-m-inner #content_layer .edit-container .tools .drag-slide span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4393f9;
+    position: absolute;
+    top: 5px;
+}
+.i-m-inner #content_layer .edit-container .tools .bigger {
+    width: 20px;
+    background-image: -webkit-image-set(url("../resource/images/to-bigger.png") 1x, url("../resource/images/to-bigger@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .bigger:hover {
+    background-image: -webkit-image-set(url("../resource/images/to-bigger-H.png") 1x, url("../resource/images/to-bigger-H@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .bigger.disabled:hover {
+    background-image: -webkit-image-set(url("../resource/images/to-bigger.png") 1x, url("../resource/images/to-bigger@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .left-rotate {
+    width: 15px;
+    height: 18px;
+    margin: 1px 20px;
+    background-image: -webkit-image-set(url("../resource/images/rotate.png") 1x, url("../resource/images/rotate@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .left-rotate:hover {
+    background-image: -webkit-image-set(url("../resource/images/rotate-H.png") 1x, url("../resource/images/rotate-H@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .left-rotate.disabled:hover {
+    background-image: -webkit-image-set(url("../resource/images/rotate.png") 1x, url("../resource/images/rotate@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .right-rotate {
+    width: 15px;
+    height: 18px;
+    margin-top: 1px;
+    transform: scalex(-1);
+    background-image: -webkit-image-set(url("../resource/images/rotate.png") 1x, url("../resource/images/rotate@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .right-rotate:hover {
+    background-image: -webkit-image-set(url("../resource/images/rotate-H.png") 1x, url("../resource/images/rotate-H@2x.png") 2x);
+}
+.i-m-inner #content_layer .edit-container .tools .right-rotate.disabled:hover {
+    background-image: -webkit-image-set(url("../resource/images/rotate.png") 1x, url("../resource/images/rotate@2x.png") 2x);
+}
+.i-m-inner #content_layer .preview-container {
+    width: 268px;
+    float: left;
+    margin-top: 28px;
+}
+.i-m-inner #content_layer .preview-container .label {
+    width: 100%;
+    height: 22px;
+    line-height: 22px;
+    text-align: left;
+    font-size: 14px;
+    color: #26252a;
+}
+.i-m-inner #content_layer .preview-container .view-wrap {
+    width: 100%;
+    height: 180px;
+    margin-top: 100px;
+    margin-bottom: 88px;
+}
+.i-m-inner #content_layer .preview-container .view-wrap .view-c {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+.i-m-inner #content_layer .preview-container .view-wrap .view-c .view {
+    position: absolute;
+}
+.i-m-inner #content_layer .preview-container .view-wrap .view {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    transform: scale(1) rotate(0);
+    margin: 0 auto;
+}
+.i-m-inner #content_layer .preview-container .view-wrap .view img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    float: left;
+    display: block;
+    border: none;
+}
+.i-m-inner #content_layer .btn-row {
+    margin: 0 auto;
+    margin-top: 26px;
+    width: 200px;
+    height: 30px;
+}
+.i-m-inner #content_layer .btn-row .btn {
+    float: left;
+    width: 90px;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    line-height: 30px;
+    text-align: center;
+    color: #999999;
+    -webkit-user-select: none;
+    font-size: 14px;
+}
+.i-m-inner #content_layer .btn-row .btn.cancel-btn {
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+.i-m-inner #content_layer .btn-row .btn.cancel-btn:hover,
+.i-m-inner #content_layer .btn-row .btn.cancel-btn:active {
+    background: #f1f2f6;
+}
+.i-m-inner #content_layer .btn-row .btn.confirm-btn {
+    color: #fff;
+    background: #4393f9;
+}
+.i-m-inner #content_layer .btn-row .btn.confirm-btn:hover,
+.i-m-inner #content_layer .btn-row .btn.confirm-btn:active {
+    background: #177cff;
+}
