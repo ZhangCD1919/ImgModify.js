@@ -5,9 +5,9 @@
  */
 
 (function ($) {
-    var methods = {
+    let methods = {
         init: function (options) {
-            var settings = $.extend({
+            let settings = $.extend({
                 sizeLimit: 10,
                 pixelLimit: [4096, 4096]
             }, options);
@@ -21,7 +21,7 @@
         <div class="edit-container">
             <div class="prompt-label">请保证头像在10M以内</div>
             <div class="cut-wrap">
-                <div class="view"></div>
+                <img class="view" src="">
                 <div class="mask"></div>
                 <img src="" alt="">
             </div>
@@ -51,14 +51,28 @@
             </div>
         </div>
     </div>`;
-
             //  填充html
             this.html(html);
-        },
-        initEvent: function () {
-            this.on('change', '.choose-file-btn', function () {
+            let loadImageEdit = (url) => {
+                let viewImgEl = this.find('.cut-wrap img');
+                viewImgEl.attr('src', url);
+            };
 
-            })
+            let initEvent = () => {
+                this.on('change', '#choose-file-btn', (e) => {
+                    console.log(e);
+                    let el = $(e.currentTarget);
+                    let file = el[0].files[0];
+                    let reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = (e) => {
+                        loadImageEdit(e.target.result);
+                    }
+
+                })
+            };
+
+            initEvent(this);
         }
     };
 
